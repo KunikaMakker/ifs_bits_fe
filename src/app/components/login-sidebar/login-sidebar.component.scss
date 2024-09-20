@@ -1,0 +1,90 @@
+::ng-deep .login-sidebar {
+  background-image: url("../../../assets/login/user-login-new.jpg");
+  background-color: #cccccc;
+  background-size: cover;
+}
+
+.login-wrapper {
+  background-color: #fff;
+  min-height: 400px;
+  border-radius: 3px;
+  bottom: 0;
+  position: fixed;
+  width: 390px;
+  margin: 0 5px;
+  display: block;
+  font-family: Lato Regular;
+}
+
+.signin-signup-wrapper {
+  padding: 12px 12px;
+  overflow: hidden;
+  position: relative;
+  font-size: 20px;
+  font-family: "Lato Bold";
+}
+
+.login-input {
+  margin-left: 8px;
+  line-height: 2.6;
+  font-size: 17px;
+  width: 97%;
+  border: 0;
+  border-bottom: 1px solid #cbcbcb;
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.login-input-label {
+  font-size: 16px;
+  left: 17px;
+  top: 64px;
+  color: #9c9c9c;
+  font-weight: 400;
+  position: absolute;
+  pointer-events: none;
+}
+
+.login-otp-btn {
+  margin-top: 16px;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 3px;
+  height: 45px;
+  border: none;
+  font-size: 18px;
+  width: 97%;
+  margin: 11px 8px;
+  padding: 10px 0;
+  background-color: #d11243;
+
+  &:disabled {
+    background-color: #d4d4d4;
+  }
+}
+
+.tnc-text {
+  font-size: 16px;
+  padding-left: 1rem;
+}
+
+::ng-deep .p-sidebar-close {
+  border: none;
+  background: none;
+  left: -12%;
+  top: 2%;
+  position: absolute;
+}
+
+::ng-deep .p-sidebar-mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  z-index: 100;
+}

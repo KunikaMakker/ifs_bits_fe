@@ -1,0 +1,18 @@
+<div>
+  <div class="cat-header-container">
+    <h5 class="title_2">Shop by categories</h5>
+    <h6 class="text_1">Freshest meats and much more!</h6>
+  </div>
+
+  <div class="container">
+    <div class="row d-flex">
+      <div class="col-3 col-md-2 pb-4" *ngFor="let category of categories">
+        <img
+          src="../../../assets/categories/{{ category.src }}"
+          class="row text-center cat-imgs"
+        />
+        <span class="row text-center cat-text">{{ category.title }}</span>
+      </div>
+    </div>
+  </div>
+</div>

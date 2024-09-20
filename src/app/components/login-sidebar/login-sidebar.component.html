@@ -1,0 +1,51 @@
+<p-sidebar
+  [(visible)]="loginData.isLoginFormOpen"
+  styleClass="login-sidebar"
+  [style]="{ width: '25rem' }"
+  position="right"
+  [modal]="true"
+  [blockScroll]="true"
+  [baseZIndex]="5"
+  [dismissible]="false"
+>
+  <ng-template pTemplate="closeicon" (click)="onSidebarClose()">
+    <img
+      src="../../../assets/icons/cross-white.svg"
+      class="siderbar-close"
+      (click)="onSidebarClose()"
+    />
+  </ng-template>
+
+  <div class="login-wrapper">
+    <div class="signin-signup-wrapper">
+      <span>Sign In/Sign Up</span>
+    </div>
+    <div>
+      <div>
+        <p>
+          <input
+            type="number"
+            class="login-input"
+            (input)="onInputChange($event)"
+          /><label *ngIf="!textEntered" class="login-input-label"
+            >Mobile Number</label
+          >
+        </p>
+        <div>
+          <button class="login-otp-btn" (click)="signIn()" [disabled]="isLoginBtnDisabled">
+            Proceed Via OTP
+          </button>
+        </div>
+        <div class="tnc-text">
+          <span
+            >By signing in you agree to our<span
+              style="color: #d0021b; cursor: pointer"
+            >
+              terms and conditions</span
+            ></span
+          >
+        </div>
+      </div>
+    </div>
+  </div></p-sidebar
+>

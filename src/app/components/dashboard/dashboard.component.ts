@@ -1,15 +1,14 @@
-import { Component } from '@angular/core';
-import { CommonService } from './services/common.service';
+import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../../services/common.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: 'app-dashboard',
+  standalone: true,
+  imports: [],
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss'
 })
-export class AppComponent {
-  title = 'licious';
-
-  loginData: any;
+export class DashboardComponent implements OnInit{
   cart: any;
   bestsellersHeading = 'Bestsellers';
   bestsellersSubHeading: string = 'Most popular products near you!';
@@ -36,10 +35,9 @@ export class AppComponent {
   topRatedData: any[] = [];
 
   constructor(private commonService: CommonService) {}
-  ngOnInit() {
-    this.loginData = this.commonService.loginData;
-    this.cart = this.commonService.getCart();
 
+  ngOnInit() {
+    this.cart = this.commonService.getCart();
     this.bestsellersData = this.commonService.getBestsellers();
     this.combosData = this.commonService.getCombos();
     this.lowersData = this.commonService.getLowers();

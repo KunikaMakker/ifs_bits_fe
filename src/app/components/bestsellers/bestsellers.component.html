@@ -1,0 +1,74 @@
+<div>
+  <div class="cat-header-container">
+    <h5 class="title_2">{{ heading }}</h5>
+    <h6 class="text_1" *ngIf="subHeading !== ''">{{ subHeading }}</h6>
+  </div>
+  <div class="container">
+    <owl-carousel-o [options]="customOptions">
+      <ng-template
+        carouselSlide
+        *ngFor="let bestseller of bestsellers; let i = index"
+      >
+        <div class="orl-item card-itm">
+          <div>
+            <img
+              src="../../assets/bestsellers/{{ bestseller.src }}"
+              class="card-icon"
+            />
+            <div class="add-to-cart" id="{{ bestseller.id }}">
+              <img
+                *ngIf="
+                  (cart.items[bestseller.id] != null ||
+                    cart.items[bestseller.id] != undefined) &&
+                  cart.items[bestseller.id] != 0
+                "
+                src="../../../assets/icons/Minus.svg"
+                class="minus-icon"
+                (click)="removeFromCartHandler($event, bestseller.id)"
+              />
+              <label
+                *ngIf="
+                  (cart.items[bestseller.id] != null ||
+                    cart.items[bestseller.id] != undefined) &&
+                  cart.items[bestseller.id] != 0
+                "
+                >{{ cart.items[bestseller.id] }}</label
+              >
+              <img
+                src="../../../assets/icons/Plus.svg"
+                class="plus-icon"
+                (click)="addToCartHandler($event, bestseller.id)"
+              />
+            </div>
+          </div>
+          <div class="card-content-area">
+            <label class="title_1">{{ bestseller.title }}</label>
+            <span class="quantity-span text_2"> {{ bestseller.quantity }}</span>
+            <div class="price-wrapper">
+              <span class="fw-bold">
+                ₹{{
+                  bestseller.discountedPrice == null
+                    ? bestseller.actualPrice
+                    : bestseller.discountedPrice
+                }}</span
+              >
+              <span
+                class="actual-price-itm text_1"
+                *ngIf="bestseller.discountedPrice != null"
+              >
+                ₹{{ bestseller.actualPrice }}</span
+              >
+              <span class="discount-itm" *ngIf="bestseller.discount != null">
+                {{ bestseller.discount }}</span
+              >
+            </div>
+            <div class="text_2" [innerHTML]="bestseller.availibility"></div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template carouselSlide
+        ><div class="view-all title_1">View All</div></ng-template
+      >
+    </owl-carousel-o>
+  </div>
+</div>
