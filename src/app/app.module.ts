@@ -20,7 +20,7 @@ import { CommonService } from './services/common.service';
 import { UserService } from './services/user.service';
 import { SharedModule } from 'primeng/api';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -40,7 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     CommonModule,
     FormsModule,
-  ReactiveFormsModule,
+    HttpClientModule
   ],
   exports: [CarouselModule, SharedModule],
   providers: [CommonService, UserService],

@@ -41,13 +41,6 @@ export class ProfileComponent {
         }
       },
       {
-        text: 'Change Password',
-        className: '',
-        openFunc: () => {
-          this.updatePanel('changePassword', 4); // Assuming this is the fifth panel
-        }
-      },
-      {
         text: 'Logout',
         openFunc: () => {
           console.log('logout');

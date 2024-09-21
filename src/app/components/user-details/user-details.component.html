@@ -1,5 +1,4 @@
 <div class="container">
-    <h2>User Profile</h2>
     <button class="btn btn-secondary mb-3" (click)="isEditOpen = !isEditOpen">
         {{ isEditOpen ? 'Cancel' : 'Edit Profile' }}
     </button>
@@ -9,7 +8,7 @@
         <div class="form-group">
             <label>Full Name</label>
             <div *ngIf="!isEditOpen">
-                <p>{{ fullname }}</p>
+                <p>{{ userFullname }}</p>
             </div>
             <div *ngIf="isEditOpen">
                 <input type="text" class="form-control" [(ngModel)]="fullname" name="fullname" required pattern="^[A-Za-z ]+$" #fullname="ngModel" />
@@ -24,7 +23,7 @@
         <div class="form-group">
             <label>Mobile</label>
             <div *ngIf="!isEditOpen">
-                <p>{{ mobile }}</p>
+                <p>{{ userMobile }}</p>
             </div>
             <div *ngIf="isEditOpen">
                 <input type="text" class="form-control" [(ngModel)]="mobile" name="mobile" required pattern="^\d{10}$" #mobile="ngModel" />
@@ -39,7 +38,7 @@
         <div class="form-group">
             <label>Address</label>
             <div *ngIf="!isEditOpen">
-                <p>{{ address }}</p>
+                <p>{{ userAddress }}</p>
             </div>
             <div *ngIf="isEditOpen">
                 <input type="text" class="form-control" [(ngModel)]="address" name="address" required #address="ngModel" />
@@ -49,35 +48,12 @@
             </div>
         </div>
 
-        <!-- Password Field -->
-        <div class="form-group">
-            <label>Password</label>
-            <div *ngIf="isEditOpen">
-                <input type="password" class="form-control" [(ngModel)]="password" name="password" required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" #password="ngModel" />
-                <div *ngIf="password.invalid && (password.touched || form.submitted)" class="alert alert-danger">
-                    <div *ngIf="password.errors?.['required']">Password is required</div>
-                    <div *ngIf="password.errors?.['pattern']">Password must be at least 8 characters long, contain a letter, number, and special character</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Repeat Password Field -->
-        <div class="form-group">
-            <label>Repeat Password</label>
-            <div *ngIf="isEditOpen">
-                <input type="password" class="form-control" [(ngModel)]="repassword" name="repassword" required #repassword="ngModel" />
-                <div *ngIf="repassword.invalid && (repassword.touched || form.submitted)" class="alert alert-danger">
-                    <div *ngIf="repassword.errors?.['required']">Repeat Password is required</div>
-                    <div *ngIf="repassword.value !== password">Passwords do not match</div>
-                </div>
-            </div>
-        </div>
 
         <!-- Gender Field -->
         <div class="form-group">
             <label>Gender</label>
             <div *ngIf="!isEditOpen">
-                <p>{{ gender }}</p>
+                <p>{{ userGender }}</p>
             </div>
             <div *ngIf="isEditOpen">
                 <div>
@@ -95,7 +71,7 @@
         <div class="form-group">
             <label>Date of Birth</label>
             <div *ngIf="!isEditOpen">
-                <p>{{ dob | date: 'longDate' }}</p>
+                <p>{{ userDob | date: 'longDate' }}</p>
             </div>
             <div *ngIf="isEditOpen">
                 <input type="date" class="form-control" [(ngModel)]="dob" name="dob" required #dob="ngModel" />
