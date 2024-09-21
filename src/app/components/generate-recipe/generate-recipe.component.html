@@ -35,10 +35,19 @@
    
    <div class="messages-container">
      <div *ngFor="let message of messages" class="message" [ngClass]="message.sender">
-       <strong *ngIf="message.sender === 'user'">You:</strong>
-       <strong *ngIf="message.sender === 'bot'">Bot:</strong>
+       <strong class="user-profile-name" *ngIf="message.sender === 'user'">You:</strong>
+       <strong class="user-profile-name" *ngIf="message.sender === 'bot'">Bot:</strong>
        <p>{{ message.content }}</p>
        <span class="timestamp">{{ message.timestamp | date:'shortTime' }}</span>
+         <div class="actions" *ngIf="message.sender === 'bot'">
+            <span class="cursor-pointer" (click)="share(message.content)">Share</span>
+            <span class="cursor-pointer" (click)="saveRecipe()" *ngIf="userService.isUserLoggedIn">Save</span>
+         </div>
+     </div>
+     <div *ngIf="botError" class="bot">
+      <strong class="user-profile-name">Bot:</strong>
+      <p>Error while processing. please try again</p>
+
      </div>
    </div>
    
@@ -48,7 +57,8 @@
        [(ngModel)]="messageInput"
        placeholder="Type your message..."
        (keydown.enter)="sendMessage()"
+       [disabled]="responseLoading"
      />
-     <button (click)="sendMessage()">Send</button>
+     <button (click)="sendMessage()" [disabled]="responseLoading">Send</button>
    </div>
 </div>
