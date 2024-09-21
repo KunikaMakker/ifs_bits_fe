@@ -1,1 +1,18 @@
-<p>recipes-dashboard works!</p>
+<div class="d-flex">
+    <app-sidebar [panels]="recipeDashboardPanels"></app-sidebar>
+    
+    <div class="details-container" *ngIf="visiblePanelName === 'discoverRecipe'">
+        <h2>Discover Recipe</h2>
+    
+    </div>
+    
+    <div class="details-container" *ngIf="visiblePanelName === 'savedRecipe'">
+    <h2>Saved Recipe</h2>
+    
+    </div>
+    
+    <div class="details-container" *ngIf="visiblePanelName === 'generateRecipe'">
+    <h2>Generate Recipe</h2>
+    <app-generate-recipe></app-generate-recipe>
+    </div>
+</div>

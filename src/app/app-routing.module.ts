@@ -5,8 +5,6 @@ import { RecipesDashboardComponent } from './components/recipes-dashboard/recipe
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  // {path: 'profile', component: ProfileComponent},
-  // {path: 'recipes-dashboard', component: RecipesDashboardComponent},
   {path: '', children: [
     {path: '', component: DashboardComponent},
     {path: 'profile', component: ProfileComponent},

@@ -9,6 +9,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { userDetailsComponent } from '../components/user-details/user-details.component';
 import { WorkInProgressComponent } from '../components/workinProgress/work-in-progress.component';
+import { GenerateRecipeComponent } from '../components/generate-recipe/generate-recipe.component';
+import { RecipesDashboardComponent } from '../components/recipes-dashboard/recipes-dashboard.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,11 +22,14 @@ import { WorkInProgressComponent } from '../components/workinProgress/work-in-pr
     CombosComponent,
     SidebarComponent,
     userDetailsComponent,
-    WorkInProgressComponent
+    WorkInProgressComponent,
+    GenerateRecipeComponent,
+    RecipesDashboardComponent
   ],
   imports: [
     CommonModule,
-    CarouselModule
+    CarouselModule,
+    FormsModule
   ],
   exports: [
     HomeCouponComponent,
@@ -34,7 +40,9 @@ import { WorkInProgressComponent } from '../components/workinProgress/work-in-pr
     CarouselModule,
     SidebarComponent,
     userDetailsComponent,
-    WorkInProgressComponent
+    WorkInProgressComponent,
+    GenerateRecipeComponent,
+    RecipesDashboardComponent
   ]
 })
 export class SharedModule {}
