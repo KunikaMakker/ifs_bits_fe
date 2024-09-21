@@ -64,8 +64,7 @@ export class GenerateRecipeComponent implements OnInit {
   
     // Create HttpHeaders with the apiKey
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'apiKey': 'sk-UV9BReVBmw6hT_jjOSPBuZIfife5LMuBZQowmT6hKNT3BlbkFJWQSqbXt8JS633dctvuIFUj4kXIm1rv11NfqkYG3zYA' // Replace with your actual API key
+      'Content-Type': 'application/json'
     });
   
     // Make the POST API call
