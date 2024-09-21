@@ -40,7 +40,8 @@
        <p>{{ message.content }}</p>
        <span class="timestamp">{{ message.timestamp | date:'shortTime' }}</span>
          <div class="actions" *ngIf="message.sender === 'bot'">
-            <span class="cursor-pointer" (click)="share(message.content)">Share</span>
+            <span class="cursor-pointer fa fa-facebook me-3" (click)="share(message.content, 1)"></span>
+            <span class="cursor-pointer fa fa-twitter" (click)="share(message.content, 2)"></span>
             <span class="cursor-pointer" (click)="saveRecipe()" *ngIf="userService.isUserLoggedIn">Save</span>
          </div>
      </div>
