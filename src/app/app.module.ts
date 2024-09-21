@@ -19,6 +19,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { CommonService } from './services/common.service';
 import { UserService } from './services/user.service';
 import { SharedModule } from 'primeng/api';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -34,9 +35,10 @@ import { SharedModule } from 'primeng/api';
     CarouselModule,
     SidebarModule,
     ButtonModule,
-    SharedModule
+    SharedModule,
+    CommonModule
   ],
-  exports: [CarouselModule],
+  exports: [CarouselModule, SharedModule],
   providers: [CommonService, UserService],
   bootstrap: [AppComponent],
 })

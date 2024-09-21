@@ -1,3 +1,27 @@
-<div>
+<div class="d-flex">
     <app-sidebar [panels]="profilePanels"></app-sidebar>
+    <div class="details-container" *ngIf="visiblePanelName === 'userDetails'">
+        <h2>User Details</h2>
+        <app-user-details></app-user-details>
+      </div>
+      
+      <div class="details-container" *ngIf="visiblePanelName === 'preferences'">
+        <h2>Preferences</h2>
+      </div>
+      
+      <div class="details-container" *ngIf="visiblePanelName === 'orderHistory'">
+        <h2>Order History</h2>
+        <app-work-in-progress></app-work-in-progress>
+      </div>
+      
+      <div class="details-container" *ngIf="visiblePanelName === 'help'">
+        <h2>Help</h2>
+        <app-work-in-progress></app-work-in-progress>
+      </div>
+      
+      <div class="details-container" *ngIf="visiblePanelName === 'changePassword'">
+        <h2>Change Password</h2>
+      </div>
+      
+      
 </div>
