@@ -63,12 +63,12 @@ export class GenerateRecipeComponent implements OnInit {
     this.responseLoading = true;
   
     // Create HttpHeaders with the apiKey
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json'
-    });
+    // const headers = new HttpHeaders({
+    //   'Content-Type': 'application/json'
+    // });
   
     // Make the POST API call
-    this.http.post('http://10.100.50.249:8080/generate-text', payload, { headers }).subscribe(
+    this.http.post('http://10.100.50.249:8080/generate-text', payload).subscribe(
       response => {
         // Handle the response from the server
         console.log('API Response:', response);
