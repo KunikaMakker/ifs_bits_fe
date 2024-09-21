@@ -1,3 +1,25 @@
-<div class="">
-   Discover Recipe
-</div>
+<div class="recipe-container">
+   <div class="recipe-cards">
+     <div *ngFor="let recipe of displayedRecipes" class="recipe-card" (click)="openModal(recipe)">
+       <img [src]="recipe.strMealThumb" alt="{{ recipe.strMeal }}" />
+       <h3>{{ recipe.strMeal }}</h3>
+     </div>
+   </div>
+ </div>
+ 
+ <!-- Modal for displaying recipe details -->
+ <div class="modal-overlay" *ngIf="isModalOpen">
+   <div class="modal-content">
+     <span class="close" (click)="closeModal()">&times;</span>
+     <h2>{{ selectedRecipe.strMeal }}</h2>
+     <img [src]="selectedRecipe.strMealThumb" alt="{{ selectedRecipe.strMeal }}" height="100" width="100"/>
+     <div>Ingredients Required</div>
+     <div class="ingredients">
+      
+     <p *ngFor="let ingredient of getIngredients(selectedRecipe)">
+       {{ ingredient }}
+     </p>
+   </div>
+   </div>
+ </div>
+ 

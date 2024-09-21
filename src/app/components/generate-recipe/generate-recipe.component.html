@@ -7,18 +7,18 @@
          <label for="cooking-level">Cooking Level:</label>
          <select id="cooking-level" [(ngModel)]="cookingLevel">
            <option value="">Select Cooking Level</option>
-           <option value="beginner">Beginner</option>
-           <option value="intermediate">Intermediate</option>
-           <option value="advanced">Advanced</option>
+           <option value="Beginner">Beginner</option>
+           <option value="Intermediate">Intermediate</option>
+           <option value="Advanced">Advanced</option>
          </select>
        </div>
        <div class="preferences-options" (click)="$event.stopPropagation()">
          <label for="spice-level">Spice Level:</label>
          <select id="spice-level" [(ngModel)]="spiceLevel">
            <option value="">Select Spice Level</option>
-           <option value="mild">Low Spicy</option>
-           <option value="medium">Medium Spicy</option>
-           <option value="hot">Very Spicy</option>
+           <option value="Low Spicy">Low Spicy</option>
+           <option value="Medium Spicy">Medium Spicy</option>
+           <option value="Very Spicy">Very Spicy</option>
          </select>
        </div>
        <div class="preferences-options" (click)="$event.stopPropagation()">
@@ -42,7 +42,7 @@
          <div class="actions" *ngIf="message.sender === 'bot'">
             <span class="cursor-pointer fa fa-facebook me-3" (click)="share(message.content, 1)"></span>
             <span class="cursor-pointer fa fa-twitter" (click)="share(message.content, 2)"></span>
-            <span class="cursor-pointer" (click)="saveRecipe()" *ngIf="userService.isUserLoggedIn">Save</span>
+            <span class="cursor-pointer" (click)="share(message.content)" *ngIf="userService.isUserLoggedIn">Share</span>
          </div>
      </div>
      <div *ngIf="botError" class="bot">

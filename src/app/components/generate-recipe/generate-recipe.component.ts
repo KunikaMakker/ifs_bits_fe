@@ -69,13 +69,13 @@ export class GenerateRecipeComponent implements OnInit {
   
     // Make the POST API call
     this.http.post('http://10.100.50.249:8080/generate-text', payload).subscribe(
-      response => {
+      (response:any) => {
         // Handle the response from the server
         console.log('API Response:', response);
   
         const botMessage: Message = {
           sender: 'bot',
-          content: `${userMessage}`, // You may want to adjust this based on the response structure
+          content: `${response.message}`, // You may want to adjust this based on the response structure
           timestamp: new Date(),
         };
   
@@ -84,11 +84,11 @@ export class GenerateRecipeComponent implements OnInit {
       },
       error => {
         // Handle any error response
-        console.error('Error:', error);
+        console.error('Error:', error.error.text);
   
         const botMessage: Message = {
           sender: 'bot',
-          content: `You said: "${userMessage}"`,
+          content: `${error.error.text}`,
           timestamp: new Date(),
         };
         this.messages.push(botMessage);

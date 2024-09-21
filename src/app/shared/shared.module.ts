@@ -12,6 +12,8 @@ import { WorkInProgressComponent } from '../components/workinProgress/work-in-pr
 import { GenerateRecipeComponent } from '../components/generate-recipe/generate-recipe.component';
 import { RecipesDashboardComponent } from '../components/recipes-dashboard/recipes-dashboard.component';
 import { FormsModule } from '@angular/forms';
+import { RecipeDetailComponent } from '../components/recipe-details/recipes-details.component';
+import { DiscoverRecipeComponent } from '../components/discover-recipe/discover-recipe.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { FormsModule } from '@angular/forms';
     userDetailsComponent,
     WorkInProgressComponent,
     GenerateRecipeComponent,
-    RecipesDashboardComponent
+    RecipesDashboardComponent,
+    RecipeDetailComponent,
+    DiscoverRecipeComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +46,9 @@ import { FormsModule } from '@angular/forms';
     userDetailsComponent,
     WorkInProgressComponent,
     GenerateRecipeComponent,
-    RecipesDashboardComponent
+    RecipesDashboardComponent,
+    RecipeDetailComponent,
+    DiscoverRecipeComponent
   ]
 })
 export class SharedModule {}
