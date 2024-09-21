@@ -1,0 +1,14 @@
+.sidebar-container {
+    width: 280px;
+    box-shadow: 10px 0 5px -10px rgba(209, 18, 67, 0.2);
+    padding-bottom: 200px;
+    .panel {
+        padding: 10px;
+        border-bottom: 1px solid rgb(0, 0, 0);
+        cursor: pointer;
+    }
+
+    .active {
+        border-right: 4px solid rgb(209, 18, 67);
+    }
+}

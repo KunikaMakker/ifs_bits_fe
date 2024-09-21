@@ -1,5 +1,5 @@
-<div>
-    <div class="panel" *ngFor="let data of panels" (click)="data.openFunc()">
+<div class="sidebar-container">
+    <div class="panel {{data.className}}" *ngFor="let data of panels" (click)="data.openFunc()">
         {{data.text}}
     </div>
 </div>
