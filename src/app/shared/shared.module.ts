@@ -6,6 +6,7 @@ import { BestsellersComponent } from '../components/bestsellers/bestsellers.comp
 import { FreshComponent } from '../components/fresh/fresh.component';
 import { CombosComponent } from '../components/combos/combos.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { SidebarComponent } from '../components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     BestsellersComponent,
     FreshComponent,
     CombosComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     BestsellersComponent,
     FreshComponent,
     CombosComponent,
-    CarouselModule
+    CarouselModule,
+    SidebarComponent
   ]
 })
 export class SharedModule {}
