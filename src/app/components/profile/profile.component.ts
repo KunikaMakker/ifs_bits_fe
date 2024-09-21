@@ -4,8 +4,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
-  standalone: true,
-  imports: [SharedModule, CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })
@@ -40,13 +38,6 @@ export class ProfileComponent {
         className: '',
         openFunc: () => {
           this.updatePanel('help', 3); // Assuming this is the fourth panel
-        }
-      },
-      {
-        text: 'Change Password',
-        className: '',
-        openFunc: () => {
-          this.updatePanel('changePassword', 4); // Assuming this is the fifth panel
         }
       },
       {

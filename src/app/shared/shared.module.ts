@@ -7,13 +7,14 @@ import { FreshComponent } from '../components/fresh/fresh.component';
 import { CombosComponent } from '../components/combos/combos.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
-import { userDetailsComponent } from '../components/user-details/user-details.component';
+import { UserDetailsComponent } from '../components/user-details/user-details.component';
 import { WorkInProgressComponent } from '../components/workinProgress/work-in-progress.component';
 import { GenerateRecipeComponent } from '../components/generate-recipe/generate-recipe.component';
 import { RecipesDashboardComponent } from '../components/recipes-dashboard/recipes-dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { RecipeDetailComponent } from '../components/recipe-details/recipes-details.component';
 import { DiscoverRecipeComponent } from '../components/discover-recipe/discover-recipe.component';
+import { ProfileComponent } from '../components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -23,17 +24,18 @@ import { DiscoverRecipeComponent } from '../components/discover-recipe/discover-
     FreshComponent,
     CombosComponent,
     SidebarComponent,
-    userDetailsComponent,
+    UserDetailsComponent,
     WorkInProgressComponent,
     GenerateRecipeComponent,
     RecipesDashboardComponent,
     RecipeDetailComponent,
-    DiscoverRecipeComponent
+    DiscoverRecipeComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     CarouselModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     HomeCouponComponent,
@@ -43,12 +45,13 @@ import { DiscoverRecipeComponent } from '../components/discover-recipe/discover-
     CombosComponent,
     CarouselModule,
     SidebarComponent,
-    userDetailsComponent,
+    UserDetailsComponent,
     WorkInProgressComponent,
     GenerateRecipeComponent,
     RecipesDashboardComponent,
     RecipeDetailComponent,
-    DiscoverRecipeComponent
+    DiscoverRecipeComponent,
+    ProfileComponent
   ]
 })
 export class SharedModule {}
