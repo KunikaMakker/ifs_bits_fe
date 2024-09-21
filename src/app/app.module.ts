@@ -20,6 +20,7 @@ import { CommonService } from './services/common.service';
 import { UserService } from './services/user.service';
 import { SharedModule } from 'primeng/api';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { CommonModule } from '@angular/common';
     SidebarModule,
     ButtonModule,
     SharedModule,
-    CommonModule
+    CommonModule,
+    FormsModule,
+  ReactiveFormsModule,
   ],
   exports: [CarouselModule, SharedModule],
   providers: [CommonService, UserService],

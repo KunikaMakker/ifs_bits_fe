@@ -7,11 +7,12 @@ import { FreshComponent } from '../components/fresh/fresh.component';
 import { CombosComponent } from '../components/combos/combos.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
-import { userDetailsComponent } from '../components/user-details/user-details.component';
+import { UserDetailsComponent } from '../components/user-details/user-details.component';
 import { WorkInProgressComponent } from '../components/workinProgress/work-in-progress.component';
 import { GenerateRecipeComponent } from '../components/generate-recipe/generate-recipe.component';
 import { RecipesDashboardComponent } from '../components/recipes-dashboard/recipes-dashboard.component';
 import { FormsModule } from '@angular/forms';
+import { ProfileComponent } from '../components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,15 +22,16 @@ import { FormsModule } from '@angular/forms';
     FreshComponent,
     CombosComponent,
     SidebarComponent,
-    userDetailsComponent,
+    UserDetailsComponent,
     WorkInProgressComponent,
     GenerateRecipeComponent,
-    RecipesDashboardComponent
+    RecipesDashboardComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
     CarouselModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     HomeCouponComponent,
@@ -39,10 +41,11 @@ import { FormsModule } from '@angular/forms';
     CombosComponent,
     CarouselModule,
     SidebarComponent,
-    userDetailsComponent,
+    UserDetailsComponent,
     WorkInProgressComponent,
     GenerateRecipeComponent,
-    RecipesDashboardComponent
+    RecipesDashboardComponent,
+    ProfileComponent
   ]
 })
 export class SharedModule {}
