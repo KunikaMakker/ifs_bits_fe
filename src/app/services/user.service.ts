@@ -4,8 +4,11 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UserService {
-    private currentUserDetails: any = {}
-    isUserLoggedIn: boolean = false;
+    // private currentUserDetails: any = {}
+    private currentUserDetails: any = {
+        name: 'customer name'
+    }
+    isUserLoggedIn: boolean = true; //false;
     constructor() {}
 
     set currentUser(data: any) {

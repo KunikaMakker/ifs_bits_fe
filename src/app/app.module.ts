@@ -18,16 +18,12 @@ import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
 import { CommonService } from './services/common.service';
 import { UserService } from './services/user.service';
+import { SharedModule } from 'primeng/api';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeCouponComponent,
-    CategoriesComponent,
-    BestsellersComponent,
-    FreshComponent,
-    CombosComponent,
     FooterComponent,
     LoginSidebarComponent,
   ],
@@ -38,6 +34,7 @@ import { UserService } from './services/user.service';
     CarouselModule,
     SidebarModule,
     ButtonModule,
+    SharedModule
   ],
   exports: [CarouselModule],
   providers: [CommonService, UserService],

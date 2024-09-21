@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonService } from '../../services/common.service';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-dashboard',
-  standalone: true,
-  imports: [],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss'
+  styleUrl: './dashboard.component.scss',
+  standalone: true, // Ensure this is set if you are using standalone
+  imports: [SharedModule], // Import the SharedModule here
 })
 export class DashboardComponent implements OnInit{
   cart: any;
