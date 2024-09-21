@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { HttpClient } from '@angular/common/http'; // Import HttpClient
+import { HttpClient, HttpHeaders } from '@angular/common/http'; // Import HttpClient
 
 interface Message {
   sender: 'user' | 'bot';
@@ -52,62 +52,64 @@ export class GenerateRecipeComponent implements OnInit {
   }
 
   generateBotResponse(userMessage: string, preferences: any) {
-    // const payload = {
-    //   message: userMessage,
-    //   preferences: preferences
-    // };
     const payload = {
       prompt: userMessage,
-      spiceLevel: preferences.spiceLevel,
-      cookLevel: preferences.cookingLevel,
-      allergy: preferences.allergies,
+      spiceLevel: preferences.spiceLevel === "" ? null : preferences.spiceLevel,
+      cookLevel: preferences.cookingLevel === "" ? null : preferences.cookingLevel,
+      allergy: preferences.allergies === "" ? null : preferences.allergies,
       maxToken: 1024
-    }
+    };
+  
     this.responseLoading = true;
+  
+    // Create HttpHeaders with the apiKey
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'apiKey': 'sk-UV9BReVBmw6hT_jjOSPBuZIfife5LMuBZQowmT6hKNT3BlbkFJWQSqbXt8JS633dctvuIFUj4kXIm1rv11NfqkYG3zYA' // Replace with your actual API key
+    });
+  
     // Make the POST API call
-
-    this.http.post('http://10.100.50.249:8080/generate-text', payload).subscribe(
+    this.http.post('http://10.100.50.249:8080/generate-text', payload, { headers }).subscribe(
       response => {
         // Handle the response from the server
         console.log('API Response:', response);
-
+  
         const botMessage: Message = {
           sender: 'bot',
-          content: `${userMessage}`,
+          content: `${userMessage}`, // You may want to adjust this based on the response structure
           timestamp: new Date(),
         };
-
-        
-        this.responseLoading = false
+  
+        this.responseLoading = false;
         this.messages.push(botMessage);
       },
       error => {
         // Handle any error response
         console.error('Error:', error);
-
+  
         const botMessage: Message = {
           sender: 'bot',
           content: `You said: "${userMessage}"`,
           timestamp: new Date(),
         };
         this.messages.push(botMessage);
-        this.responseLoading = false
+        this.responseLoading = false;
         // this.botError = true;
       }
     );
-  }
+  }  
 
   saveRecipe() {
 
   }
 
-  share(msg: string) {
+  share(msg: string, socialMedia: number = 0) {
     // const lastBotMessage = this.messages[this.messages.length - 1]?.content;
     const botMessage = msg;
 
     if (botMessage) {
       // Using the Web Share API for mobile devices
-      if (navigator.share && false) {
+      if (navigator.share && socialMedia == 0) {
         navigator.share({
           title: 'Recipe Bot Response',
           text: botMessage,
@@ -119,13 +121,21 @@ export class GenerateRecipeComponent implements OnInit {
         });
       } else {
         // Fallback: Create share links for social media
-        const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(botMessage)}`;
-        const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(botMessage)}&url=${encodeURIComponent(window.location.href)}`;
+        if(socialMedia == 1) {
+          const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(botMessage)}`;
+          window.open(facebookUrl, '_blank');
+        }
+        else if(socialMedia == 2) {
+          const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(botMessage)}&url=${encodeURIComponent(window.location.href)}`;
+          window.open(twitterUrl, '_blank');
+        }
+        
+
 
         // Open the sharing links in a new window
         // window.open(facebookUrl, '_blank');
         // Optionally uncomment this to open Twitter share too
-        window.open(twitterUrl, '_blank');
+        
       }
     }
   }

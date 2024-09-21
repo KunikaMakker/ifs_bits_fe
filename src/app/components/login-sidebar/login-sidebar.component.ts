@@ -48,9 +48,13 @@ export class LoginSidebarComponent {
           // Update userService.currentUser with the response data
           this.userService.currentUser = {
             name: response.name || 'user', // Adjust according to your API response
-            mobileNumber: response.mobileNumber || this.phoneInput // Optional: add mobile number
+            mobileNumber: response.mobileNumber || this.phoneInput, // Optional: add mobile number
+            dateOfBirth: response.dateOfBirth,
+            userHistory: response.userHistory
           };
-          this.onSidebarClose();
+          this.userService.isUserLoggedIn = true
+          this.loginData.isLoginFormOpen = false;
+          this.onSidebarClose()
         },
         error => {
           console.error('Error during registration', error);
