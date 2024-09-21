@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { CommonService } from '../../services/common.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http'; // Import HttpClient
+import { Observable } from 'rxjs'; // Import Observable for type
 
 @Component({
   selector: 'app-login-sidebar',
@@ -11,26 +13,27 @@ export class LoginSidebarComponent {
   @Input() loginData: any;
   textEntered: boolean = false;
   isLoginBtnDisabled: boolean = true;
-  phoneInput: number|undefined;
+  phoneInput: number | undefined;
 
-  constructor(private userService: UserService, public commonService: CommonService) {
-
-  }
+  constructor(
+    private userService: UserService,
+    public commonService: CommonService,
+    private http: HttpClient // Inject HttpClient
+  ) {}
 
   onInputChange(e: any) {
-    if (e.target.value.length > 0) this.textEntered = true;
-    else this.textEntered = false;
+    this.textEntered = e.target.value.length > 0;
 
-    if (e.target.value.length == 10) {
+    if (e.target.value.length === 10) {
       this.isLoginBtnDisabled = false;
-      this.phoneInput = e.target.value
+      this.phoneInput = e.target.value;
+    } else {
+      this.isLoginBtnDisabled = true;
     }
-    else this.isLoginBtnDisabled = true;
   }
 
   onSidebarClose() {
-    let elements: HTMLCollection =
-      document.getElementsByClassName('p-sidebar-mask');
+    const elements: HTMLCollection = document.getElementsByClassName('p-sidebar-mask');
     for (let i = 0; i < elements.length; i++) {
       elements[i]?.classList.add('p-sidebar-mask-hidden');
       elements[i]?.classList.remove('p-sidebar-mask');
@@ -38,12 +41,32 @@ export class LoginSidebarComponent {
   }
 
   signIn() {
-    console.log('user phone number', this.phoneInput);
-    this.userService.currentUser = {
-      name: 'user'
+    if (this.phoneInput) {
+      this.registerUser(this.phoneInput).subscribe(
+        response => {
+          console.log('User registered successfully', response);
+          // Update userService.currentUser with the response data
+          this.userService.currentUser = {
+            name: response.name || 'user', // Adjust according to your API response
+            mobileNumber: response.mobileNumber || this.phoneInput // Optional: add mobile number
+          };
+          this.onSidebarClose();
+        },
+        error => {
+          console.error('Error during registration', error);
+        }
+      );
     }
-    this.commonService.loginData.isLoginFormOpen = false
-    this.userService.isUserLoggedIn = true
-    this.onSidebarClose()
+  }
+
+  private registerUser(mobileNumber: number): Observable<any> {
+    const url = 'http://10.100.50.249:8080/register';
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    const payload = { mobileNumber };
+
+    return this.http.post(url, payload, { headers });
   }
 }

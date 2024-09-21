@@ -8,7 +8,7 @@ export class UserService {
     // private currentUserDetails: any = {
     //     name: 'customer name'
     // }
-    isUserLoggedIn: boolean = true; //false;
+    isUserLoggedIn: boolean = false; //false;
     constructor() {}
 
     set currentUser(data: any) {
